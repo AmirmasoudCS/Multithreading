@@ -22,13 +22,17 @@ def get_mail():
 
 
 def no_threading():
+    start_time = time.perf_counter()
     # Running on the same thread -> Sequentially
     walk_the_dog()
     take_out_trash()
     get_mail()
+    elapsed_time = time.perf_counter() - start_time
+    print(f"Time took to do all the chores:\t{elapsed_time:.2f} seconds.")
 
 
 def yes_threading():
+    start_time = time.perf_counter()
     # Running on different threads -> Concurrently
     chore1 = threading.Thread(target=walk_the_dog)
     chore2 = threading.Thread(target=take_out_trash)
@@ -42,6 +46,8 @@ def yes_threading():
     chore2.join()
     chore3.join()
 
+    elapsed_time = time.perf_counter() - start_time
+    print(f"Time took to do all the chores:\t{elapsed_time:.2f} seconds.")
 
 if __name__ == "__main__":
     choice = int(input("What method to inspect?\n1. No Threading\n2. Yes Threading\n"))
