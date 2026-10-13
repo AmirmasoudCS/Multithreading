@@ -1,8 +1,9 @@
-# Multithreading
-
 <div align="center">
     <img src="assets/banner.png" width="100%">
+    <em><p>Generated using ChatGPT</p></em>
 </div>
+
+# Multithreading
 
 A simple Python project demonstrating the difference between sequential execution and multithreading using everyday tasks.
 
