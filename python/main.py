@@ -1,48 +1,51 @@
-# multithreading = Used to perform multiple tasks concurrently (multitasking)
-#                  Good for I/O bound tasks like reading files or fetching data from APIs
-#                  threading.Thread(target=my_function)
-
 import threading
 import time
 
 
 def walk_the_dog():
+    start_time = time.perf_counter()
     time.sleep(8)
-    print("You finish walking the dog.")
+    elapsed_time = time.perf_counter() - start_time
+    print(f"You finish walking the dog. Time taken: {elapsed_time:.2f} seconds.")
 
 def take_out_trash():
+    start_time = time.perf_counter()
     time.sleep(2)
-    print("You take out the trash.")
+    elapsed_time = time.perf_counter() - start_time
+    print(f"You take out the trash. Time taken: {elapsed_time:.2f} seconds.")
 
 def get_mail():
+    start_time = time.perf_counter()
     time.sleep(4)
-    print("You get the mail.")
+    elapsed_time = time.perf_counter() - start_time
+    print(f"You get the mail. Time taken: {elapsed_time:.2f} seconds.")
+
 
 def no_threading():
-
     # Running on the same thread -> Sequentially
-    
     walk_the_dog()
     take_out_trash()
     get_mail()
 
+
 def yes_threading():
-
-    # Running on different threads -> Parallel
-
+    # Running on different threads -> Concurrently
     chore1 = threading.Thread(target=walk_the_dog)
-    chore1.start()
-
     chore2 = threading.Thread(target=take_out_trash)
-    chore2.start()
-
     chore3 = threading.Thread(target=get_mail)
+
+    chore1.start()
+    chore2.start()
     chore3.start()
 
+    chore1.join()
+    chore2.join()
+    chore3.join()
 
 
 if __name__ == "__main__":
-    choice = int(input("What method to inspect?\n1.No Threading\n2.Yes Threading\n"))
+    choice = int(input("What method to inspect?\n1. No Threading\n2. Yes Threading\n"))
+
     if choice == 1:
         no_threading()
     elif choice == 2:
