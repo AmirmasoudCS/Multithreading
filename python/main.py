@@ -18,4 +18,13 @@ def get_mail():
     time.sleep(4)
     print("You get the mail.")
 
+def no_threading():
+    
+    walk_the_dog()
+    take_out_trash()
+    get_mail()
 
+if __name__ == "__main__":
+    choice = int(input("What method to inspect?\n1.No Threading\n2.Yes Threading\n"))
+    if choice == 1:
+        no_threading()
