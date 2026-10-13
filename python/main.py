@@ -2,11 +2,11 @@ import threading
 import time
 
 
-def walk_the_dog(name):
+def walk_the_dog(name, weather):
     start_time = time.perf_counter()
     time.sleep(8)
     elapsed_time = time.perf_counter() - start_time
-    print(f"You finish walking {name}. Time taken: {elapsed_time:.2f} seconds.")
+    print(f"You finish walking {name} in a {weather} weather. Time taken: {elapsed_time:.2f} seconds.")
 
 def take_out_trash():
     start_time = time.perf_counter()
@@ -34,7 +34,7 @@ def no_threading():
 def yes_threading():
     start_time = time.perf_counter()
     # Running on different threads -> Concurrently
-    chore1 = threading.Thread(target=walk_the_dog, args=("Torob",))
+    chore1 = threading.Thread(target=walk_the_dog, args=("Torob", "rainy"))
     chore2 = threading.Thread(target=take_out_trash)
     chore3 = threading.Thread(target=get_mail)
 
