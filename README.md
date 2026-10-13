@@ -1,5 +1,9 @@
 # Multithreading
 
+<div align="center">
+    <img src="assets/banner.png" width="100%">
+</div>
+
 A simple Python project demonstrating the difference between sequential execution and multithreading using everyday tasks.
 
 ## What Is Multithreading?
